@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+pytest-cov = "*"
+pytest-mock = "*"
+flake8 = "*"
+ipython = "*"
+rhei = {editable = true,path = "."}
+
+[packages]
+rhei = {editable = true,path = "."}
+
+[requires]
+python_version = "3.7"

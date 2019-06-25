@@ -1,0 +1,12 @@
+version: '3.5'
+
+services:
+  rhei:
+    container_name: rhei
+    build: .
+    volumes:
+      - ".:/srv"
+      - "./tests:/srv/tests"
+      - "/srv/.venv"
+    command: "tail -f /dev/null"
+    restart: always

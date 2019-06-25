@@ -1,0 +1,28 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/circleci-rhei
+    docker:
+      - image: circleci/python:3.7
+        environment:
+          PIPENV_VENV_IN_PROJECT: true
+    steps:
+      - checkout
+      - restore_cache:
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+      - run:
+          name: Install developer packages
+          command: |
+            sudo pip install pipenv
+            pipenv install -d
+            pipenv run python setup.py clean
+      - run:
+          name: Run tests
+          command: |
+            mkdir test-results
+            pipenv run pytest --junitxml=./test-results/summary.xml | tee ./test-results/pytest.txt
+      - store_artifacts:
+          path: test-results
+          destination: artifacts
+      - store_test_results:
+          path: test-results
