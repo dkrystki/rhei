@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from setuptools import setup, Command
 
 from rhei.__version__ import __version__
@@ -18,15 +19,12 @@ class CleanCommand(Command):
         os.system('rm -vrf ./build ./dist ./*.pyc ./*.tgz ./*.egg-info')
 
 
-with open('README.rst', 'r', encoding='utf-8') as f:
-    readme = f.read()
-
 setup(
     name='rhei',
     version=__version__,
     packages=['rhei'],
     description='Package that implements simple stopwatch class.',
-    long_description=readme,
+    long_description=Path("README.rst").read_text(),
     author="Damien Krystkiewicz",
     author_email='damian.krystkiewicz@gmail.com',
     keywords=['timer', 'stopwatch'],
