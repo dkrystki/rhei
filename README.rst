@@ -5,6 +5,12 @@ Rhei - Simple stopwatch class
 
 Rhei is a Python 3 package that implements simple stopwatch functionality including pausing and resetting.
 
+Installation
+------------
+.. code-block:: console
+
+    pip install rhei
+
 
 In a nutshell
 -------------
@@ -39,13 +45,13 @@ In order to run local development you have to have Docker and Docker Compose ins
 
 
 Starting things up
-############
+##################
 .. code-block:: console
 
     docker-compose up -d
 
 Logging into the docker terminal
-############################
+################################
 .. code-block:: console
 
     ./bin/terminal

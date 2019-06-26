@@ -22,9 +22,10 @@ jobs:
             mkdir test-results
             pipenv run pytest --junitxml=./test-results/summary.xml | tee ./test-results/pytest.txt
       - run:
-          name: Run lints
+          name: Run rstcheck
           command: |
-            pipenv run flake8 | tee ./test-results/flake8.txt
+            pipenv run rstcheck README.rst| tee ./test-results/rstcheck.txt
+
       - store_artifacts:
           path: test-results
           destination: artifacts
