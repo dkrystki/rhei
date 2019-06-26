@@ -21,6 +21,10 @@ jobs:
           command: |
             mkdir test-results
             pipenv run pytest --junitxml=./test-results/summary.xml | tee ./test-results/pytest.txt
+      - run:
+          name: Run lints
+          command: |
+            pipenv run flake8 | tee ./test-results/flake8.txt
       - store_artifacts:
           path: test-results
           destination: artifacts

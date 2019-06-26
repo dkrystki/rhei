@@ -63,7 +63,6 @@ def test_pausing_twice(time_mock):
     assert timer.get() == 20
     assert timer.state == TimerState.PAUSED
 
-
 def test_resetting(time_mock):
     time_mock.return_value = 0
     timer = Timer()
