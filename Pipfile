@@ -10,6 +10,7 @@ pytest-mock = "*"
 flake8 = "*"
 ipython = "*"
 rhei = {editable = true,path = "."}
+twine = "*"
 
 [packages]
 rhei = {editable = true,path = "."}

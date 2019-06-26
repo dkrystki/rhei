@@ -1,4 +1,3 @@
-from setuptools import find_packages, setup
 import os
 from setuptools import setup, Command
 
@@ -26,7 +25,7 @@ setup(
     name='rhei',
     version=__version__,
     packages=['rhei'],
-    description='Package that implements simple stopwatch/timer class.',
+    description='Package that implements simple stopwatch class.',
     long_description=readme,
     author="Damien Krystkiewicz",
     author_email='damian.krystkiewicz@gmail.com',
