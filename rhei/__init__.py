@@ -34,8 +34,8 @@ class Timer:
 
     def reset(self) -> None:
         current_time = float(time.time())
-        self._time_coef: float = current_time
-        self._pause_time_start: float = current_time
+        self._time_coef = current_time
+        self._pause_time_start = current_time
 
     def get(self) -> float:
         if self._state == TimerState.PAUSED:
