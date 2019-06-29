@@ -20,7 +20,6 @@ COPY docker/motd/.bashrc /home/rhei/.bashrc
 RUN chown -R rhei:rhei /srv
 WORKDIR /srv
 
-# Setup data provider
 COPY --chown=rhei:rhei . .
 USER rhei
 

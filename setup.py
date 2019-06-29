@@ -1,8 +1,6 @@
 import os
-from pathlib import Path
-from setuptools import setup, Command
 
-from rhei.__version__ import __version__
+from setuptools import setup, Command
 
 
 class CleanCommand(Command):
@@ -20,18 +18,8 @@ class CleanCommand(Command):
 
 
 setup(
-    name='rhei',
-    version=__version__,
-    packages=['rhei'],
-    description='Package that implements simple stopwatch class.',
-    long_description=Path("README.rst").read_text(),
-    author="Damien Krystkiewicz",
-    author_email='damian.krystkiewicz@gmail.com',
-    keywords=['timer', 'stopwatch'],
-    install_requires=[],
-    url='https://github.com/dkrystki/rhei',
-    python_requires='>=3.7',
-    license='Apache 2.0',
+    setup_requires=['pbr'],
+    pbr=True,
     cmdclass={
         'clean': CleanCommand,
     }

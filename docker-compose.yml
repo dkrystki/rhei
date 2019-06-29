@@ -6,7 +6,6 @@ services:
     build: .
     volumes:
       - ".:/srv"
-      - "./tests:/srv/tests"
       - "/srv/.venv"
     command: "tail -f /dev/null"
     restart: always

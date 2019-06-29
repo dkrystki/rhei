@@ -11,10 +11,10 @@ flake8 = "*"
 ipython = "*"
 rhei = {editable = true,path = "."}
 twine = "*"
+rstcheck = "*"
+pbr = "*"
 
 [packages]
-rhei = {editable = true,path = "."}
-rstcheck = "*"
 
 [requires]
 python_version = "3.7"
