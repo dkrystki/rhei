@@ -1,3 +1,6 @@
+#  type: ignore
+from typing import List
+
 import os
 
 from setuptools import setup, Command
@@ -5,7 +8,7 @@ from setuptools import setup, Command
 
 class CleanCommand(Command):
     """Custom clean command to tidy up the project root."""
-    user_options = []
+    user_options: List = []
 
     def initialize_options(self):
         pass
