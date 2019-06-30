@@ -36,6 +36,10 @@ jobs:
           command: |
             pipenv run mypy . | tee ./test-results/mypy.txt
       - run:
+          name: Run flake8
+          command: |
+            pipenv run flake8 | tee ./test-results/flake8.txt
+      - run:
           name: Run rstcheck
           command: |
             pipenv run rstcheck README.rst| tee ./test-results/rstcheck.txt
