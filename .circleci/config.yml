@@ -29,20 +29,19 @@ jobs:
       - run:
           name: Run tests
           command: |
-            mkdir test-results
-            pipenv run pytest --junitxml=./test-results/summary.xml | tee ./test-results/pytest.txt
+            ./bin/cont/test
       - run:
           name: Run tests
           command: |
-            pipenv run mypy . | tee ./test-results/mypy.txt
+            ./bin/cont/mypy
       - run:
           name: Run flake8
           command: |
-            pipenv run flake8 | tee ./test-results/flake8.txt
+            ./bin/cont/flake8
       - run:
           name: Run rstcheck
           command: |
-            pipenv run rstcheck README.rst| tee ./test-results/rstcheck.txt
+            ./bin/cont/rstcheck
 
       - store_artifacts:
           path: test-results
@@ -59,11 +58,11 @@ jobs:
       - run:
           name: Build a package
           command: |
-            bash ./bin/build
+            bash ./bin/cont/build
       - run:
           name: Publish the package
           command: |
-            bash ./bin/publish
+            bash ./bin/cont/publish
 
 workflows:
   version: 2
@@ -81,4 +80,3 @@ workflows:
               ignore: /.*/
             tags:
               only: /^[0-9]+(\.[0-9]+)*$/
-
