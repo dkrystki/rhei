@@ -3,6 +3,22 @@
 Rhei - Simple stopwatch class
 ====================================
 
+.. image:: https://badge.fury.io/py/rhei.svg
+    :target: https://pypi.org/project/rhei/
+
+.. image:: https://circleci.com/gh/dkrystki/rhei.svg?style=svg
+    :target: https://circleci.com/gh/dkrystki/rhei
+
+.. image:: https://codecov.io/gh/dkrystki/rhei/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/dkrystki/rhei
+
+.. image:: https://img.shields.io/badge/python-3.6-blue.svg
+    :target: https://www.python.org/downloads/release/python-360/
+
+.. image:: https://img.shields.io/badge/python-3.7-blue.svg
+    :target: https://www.python.org/downloads/release/python-370/
+
+
 Rhei is a Python 3 package that implements simple stopwatch functionality including pausing and resetting.
 
 Installation

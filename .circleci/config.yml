@@ -18,7 +18,9 @@ restore_cache: &restore_cache
     name: "Restore cache"
     key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
 
-version: 2
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.5
 jobs:
   test-lib:
     <<: *defaults
@@ -28,20 +30,17 @@ jobs:
       - *install_packages
       - run:
           name: Run tests
-          command: |
-            ./bin/cont/test
+          command: ./bin/cont/test
+      - codecov/upload
       - run:
-          name: Run tests
-          command: |
-            ./bin/cont/mypy
+          name: Run mypy
+          command: ./bin/cont/mypy
       - run:
           name: Run flake8
-          command: |
-            ./bin/cont/flake8
+          command: ./bin/cont/flake8
       - run:
           name: Run rstcheck
-          command: |
-            ./bin/cont/rstcheck
+          command: ./bin/cont/rstcheck
 
       - store_artifacts:
           path: test-results
