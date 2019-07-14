@@ -9,7 +9,6 @@ pytest-cov = "*"
 pytest-mock = "*"
 flake8 = "*"
 ipython = "*"
-rhei = {editable = true,path = "."}
 twine = "*"
 rstcheck = "*"
 pbr = "*"

@@ -10,7 +10,7 @@ Rhei - Simple stopwatch class
     :target: https://circleci.com/gh/dkrystki/rhei
 
 .. image:: https://codecov.io/gh/dkrystki/rhei/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/dkrystki/rhei
+    :target: https://codecov.io/gh/dkrystki/rhei
 
 .. image:: https://img.shields.io/badge/python-3.6-blue.svg
     :target: https://www.python.org/downloads/release/python-360/

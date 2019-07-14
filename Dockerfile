@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM python:3.7-slim-stretch
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL C.UTF-8
@@ -6,24 +6,19 @@ ENV LANG C.UTF-8
 ENV SHELL /bin/bash
 
 
-# Install common
-RUN apt update && pip3 install pipenv
+RUN pip3 install pipenv
+
+# uncomment aliases and colors
+RUN sed -i '9,14 s/# *//' /root/.bashrc
+RUN sed -i '16,30 s/# *//' /root/.bashrc
 
 # Setup motd
 COPY docker/motd/motd /etc/motd
-COPY docker/motd/.bashrc /root/.bashrc
+RUN echo "echo -e \"`cat /etc/motd`\"" >> /root/.bashrc
 
-# uid is set to 1000 for development purposes
-RUN useradd -ms /bin/bash -u 1000 rhei
-COPY docker/motd/.bashrc /home/rhei/.bashrc
 
-RUN chown -R rhei:rhei /srv
 WORKDIR /srv
-
-COPY --chown=rhei:rhei . .
-USER rhei
+COPY . .
 
 # PipEnv
-ENV PIPENV_VENV_IN_PROJECT true
-RUN pipenv install -d
-RUN pipenv run python setup.py clean
+RUN pipenv install -d --system
