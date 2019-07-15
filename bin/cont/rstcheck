@@ -2,3 +2,5 @@
 
 mkdir -p test-results
 pipenv run rstcheck README.rst | tee ./test-results/rstcheck.txt
+
+exit $?
