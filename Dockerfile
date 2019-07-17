@@ -8,17 +8,25 @@ ENV SHELL /bin/bash
 
 RUN pip3 install pipenv
 
-# uncomment aliases and colors
-RUN sed -i '9,14 s/# *//' /root/.bashrc
-RUN sed -i '16,30 s/# *//' /root/.bashrc
-
-# Setup motd
-COPY docker/motd/motd /etc/motd
-RUN echo "echo -e \"`cat /etc/motd`\"" >> /root/.bashrc
-
-
 WORKDIR /srv
 COPY . .
 
 # PipEnv
 RUN pipenv install -d --system
+
+
+COPY docker/motd/motd /etc/motd
+
+# Fix user owwnership
+RUN addgroup --gid 1000 rhei && adduser --disabled-password --disabled-login --gecos "" --uid 1000 --gid 1000 rhei
+
+USER rhei
+
+# uncomment aliases and colors
+RUN echo "force_color_prompt=yes" /home/rhei/.bashrc
+RUN echo "alias ll='ls -l'" >> /home/rhei/.bashrc
+RUN echo "alias la='ls -A'" >> /home/rhei/.bashrc
+
+# Setup motd
+COPY docker/motd/motd /etc/motd
+RUN echo "echo -e \"`cat /etc/motd`\"" >> /home/rhei/.bashrc
