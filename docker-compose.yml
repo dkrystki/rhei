@@ -3,8 +3,11 @@ version: '3.5'
 services:
   rhei:
     container_name: rhei
-    build: .
+    hostname: rhei
+    build:
+      dockerfile: ./docker/Dockerfile
+      context: .
     volumes:
       - ".:/srv"
-    command: "tail -f /dev/null"
+    command: /usr/bin/supervisord
     restart: always

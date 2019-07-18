@@ -107,5 +107,43 @@ def test_pause_and_reset(time_mock):
     time_mock.return_value = 1030
     timer.reset()
     time_mock.return_value = 1040
-    assert timer.get() == 0
+    assert timer.get() == 10
     assert timer.state == TimerState.PAUSED
+
+
+def test_initial_value(time_mock):
+    time_mock.return_value = 1000
+    timer = Timer(10.0)
+    assert timer.state == TimerState.PAUSED
+    assert timer.get() == 10.0
+
+    timer.start()
+    time_mock.return_value = 1010
+    assert timer.get() == 20.0
+
+
+def test_reverse_counting(time_mock):
+    time_mock.return_value = 1000
+    timer = Timer(10.0)
+    assert timer.state == TimerState.PAUSED
+    assert timer.get() == 10.0
+
+    timer.start()
+    time_mock.return_value = 1010
+    assert timer.get() == 20.0
+
+    timer.start(reversed=True)
+    time_mock.return_value = 1020
+    assert timer.get() == 10.0
+
+    timer.start(reversed=False)
+    timer.start()
+    time_mock.return_value = 1030
+    assert timer.get() == 20.0
+
+    time_mock.return_value = 1050
+    timer.stop()
+    timer.reset(100)
+    timer.start(reversed=True)
+    time_mock.return_value = 1080
+    assert timer.get() == 70.0
