@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+mkdir -p test-results
+pytest --cov-config=.coveragerc --cov=rhei --junitxml=./test-results/summary.xml --cov-report=xml --cov-report=html

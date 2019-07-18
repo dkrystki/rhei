@@ -1,1 +1,1 @@
-from .timer import *
+from .timer import *  # noqa

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+cd /srv
+
+./bin/ci/flake8
+./bin/ci/mypy
+./bin/ci/rstcheck
+./bin/ci/test

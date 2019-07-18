@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+mkdir -p test-results
+flake8 . | tee ./test-results/flake8.txt
