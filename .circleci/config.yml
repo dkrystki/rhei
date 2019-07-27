@@ -1,5 +1,5 @@
 defaults: &defaults
-  working_directory: ~/srv
+  working_directory: /srv
   docker:
     - image: circleci/python:3.7
 
@@ -37,16 +37,15 @@ jobs:
       - run:
           name: Run mypy
           command: ./bin/ci/mypy
-      - codecov/upload
       - run:
           name: Run rstcheck
           command: ./bin/ci/rstcheck
-
       - store_artifacts:
           path: test-results
           destination: artifacts
       - store_test_results:
           path: test-results
+      - codecov/upload
 
   publish:
     <<: *defaults

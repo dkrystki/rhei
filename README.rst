@@ -19,7 +19,7 @@ Rhei - Simple stopwatch class
     :target: https://www.python.org/downloads/release/python-370/
 
 
-Rhei is a Python 3 package that implements simple stopwatch functionality including pausing and resetting.
+Rhei is a Python 3 package that implements simple stopwatch functionality including pausing, resetting and reverse counting.
 
 Installation
 ------------
@@ -34,22 +34,26 @@ In a nutshell
 .. code-block:: python
 
     from time import sleep
-    from rhei import Timer
+    from rhei import Stopwatch
 
-    timer = Timer()
-    timer.start()
+    stopwatch = Stopwatch()
+    stopwatch.start()
     sleep(5)
-    timer.get()  # 5.0
+    stopwatch.value  # 5.0
 
-    time.pause()
+    stopwatch.pause()
     sleep(2)
-    timer.get()  # 5.0
+    stopwatch.value  # 5.0
 
-    timer.reset()
-    timer.get()  # 0.0
+    stopwatch.reset()
+    stopwatch.value  # 0.0
 
-    timer.start()  # Counting starts again
+    stopwatch.reset(10.0)
+    stopwatch.value  # 10.0
+    stopwatch.start(reversed=True)  # Start counting down
 
+    sleep(2)
+    stopwatch.value  # -2.0
 
 Development
 -----------
@@ -70,6 +74,6 @@ Logging into the docker terminal
 ################################
 .. code-block:: console
 
-    ./bin/terminal
+    ./bin/host/terminal
 
 The code is synchronised between a docker container and the host using volumes so any changes ( ``pipenv install`` etc ) will be affected on the host.
