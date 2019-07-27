@@ -1,1 +1,1 @@
-from .stopwatch import Stopwatch  # noqa
+from .stopwatch import *  # noqa
