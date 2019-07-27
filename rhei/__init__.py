@@ -1,1 +1,1 @@
-from .timer import *  # noqa
+from .stopwatch import Stopwatch  # noqa
